@@ -53,92 +53,33 @@ SequenceMatters
                   ├─ flownet
                   |   └─ spynet_sintel_final-3d2a1287.pth
                   ├─ PSRT_REDS.pth
-                  └─ [**PSRT_Vimeo.pth**](#)
+                  └─ PSRT_Vimeo.pth
 
 ```
 
-### How to use
-You can easily import the DiffuseHighSDXLPipeline from our provided code below.
+### Quick Running
+You can simply excute the whole process on entire dataset of Blender or Mip-NeRF 360 Dataset.
+```Shell
+# Run Blender Dataset
+bash scripts/run_blender.sh
 
-For example, you can generate 2K image via below code.
-```Python
-from pipeline_diffusehigh_sdxl import DiffuseHighSDXLPipeline
-pipeline = DiffuseHighSDXLPipeline.from_pretrained(
-        "stabilityai/stable-diffusion-xl-base-1.0", torch_dtype=torch.float16,
-).to("cuda")
-
-negative_prompt = "blurry, ugly, duplicate, poorly drawn, deformed, mosaic"
-prompt = "A baby bunny sitting on a stack of pancakes."
-
-image = pipeline(
-        prompt,
-        negative_prompt=negative_prompt,
-        target_height=[1536, 2048],
-        target_width=[1536, 2048],
-        enable_dwt=True,
-        dwt_steps=5,
-        enable_sharpening=True,
-        sharpness_factor=1.0,
-    ).images[0]
-
-image.save("sample_bunny_2K.png")
-```
-result:
-<img src="figures/sample_bunny_2K.png">
-
-
-For 4K image generation, try below code!
-```Python
-from pipeline_diffusehigh_sdxl import DiffuseHighSDXLPipeline
-pipeline = DiffuseHighSDXLPipeline.from_pretrained(
-        "stabilityai/stable-diffusion-xl-base-1.0", torch_dtype=torch.float16,
-).to("cuda")
-
-negative_prompt = "blurry, ugly, duplicate, poorly drawn, deformed, mosaic"
-prompt = "Cinematic photo of delicious chocolate icecream."
-
-image = pipeline(
-        prompt,
-        negative_prompt=negative_prompt,
-        target_height=[2048, 3072, 4096],
-        target_width=[2048, 3072, 4096],
-        enable_dwt=True,
-        dwt_steps=5,
-        enable_sharpening=True,
-        sharpness_factor=1.0,
-    ).images[0]
-
-image.save("sample_icecream_4K.png")
+# Run Mip-NeRF 360 Dataset
+bash scripts/run_mip360.sh
 ```
 
-result:
-<img src="figures/sample_icecream_4K.png">
+### Training a Single Object / Scene
+First, downsample the dataset to create LR dataset (You can use ```scripts/downscale_dataset_blender.py``` or ```scripts/downscale_dataset_mip.py```). Then, revise configuration file (```configs/blender.yml``` or ```configs/mip360.yml```), and run the code below:
+```Shell
+# Training a single object of Blender Dataset
+python train.py \
+-m <output path> --eval \
+--config <path to the revised configuration file>
 
-Also try with "DSLR shot of" or "Photorealistic picture of" -based prompts for photorealistic samples!
-```Python
-from pipeline_diffusehigh_sdxl import DiffuseHighSDXLPipeline
-pipeline = DiffuseHighSDXLPipeline.from_pretrained(
-        "stabilityai/stable-diffusion-xl-base-1.0", torch_dtype=torch.float16,
-).to("cuda")
-
-negative_prompt = "blurry, ugly, duplicate, poorly drawn, deformed, mosaic"
-prompt = "A DSLR shot of fresh strawberries in a ceramic bowl, with tiny water droplets on the fruit, highly detailed, sharp focus, photo-realistic, 8K."
-
-image = pipeline(
-        prompt,
-        negative_prompt=negative_prompt,
-        target_height=[2048, 3072, 4096],
-        target_width=[2048, 3072, 4096],
-        enable_dwt=True,
-        dwt_steps=5,
-        enable_sharpening=True,
-        sharpness_factor=1.0,
-    ).images[0]
-
-image.save("sample_DSLR_strawberry_4K.png")
+# Run on Mip-NeRF 360 Dataset
+python train.py \
+-m <output path> \
+-i "images_vsr" --eval -r 1 \
+--config <path to the revised configuration file>
 ```
 
-result:
-<img src="figures/sample_DSLR_strawberry_4K.png">
 
-If the result image has undesirable structural properties, you can adjust `dwt_steps` argument to little more higher value, e.g., `dwt_steps=7`. If the result image still seems blurry, try higher `sharpness_factor` argument value, e.g., `sharpness_factor=2.0`.
