@@ -1,53 +1,45 @@
-# Sequence Matters : Harnessing Video Model in 3D Super-Resolution
+# Sequence Matters: Harnessing Video Model in 3D Super-Resolution
 
-[![Project Page](https://img.shields.io/badge/Project-Page-green.svg)](https://yhyun225.github.io/DiffuseHigh/)
-[![arXiv](https://img.shields.io/badge/arXiv-2311.16973-b31b1b.svg)](https://arxiv.org/abs/2406.18459)
+[![Project Page](https://img.shields.io/badge/Project-Page-green.svg)](https://github.com/DHPark98/SequenceMatters/)
+[![arXiv](https://img.shields.io/badge/arXiv-2311.16973-b31b1b.svg)](https://github.com/DHPark98/SequenceMatters)
 
-Official github for "DiffuseHigh: Training-free Progressive High-Resolution Image Synthesis through Structure Guidance"
+Official github for "Sequence Matters: Harnessing Video Model in 3D Super-Resolution"
 
-<img src="figures/main_figure.jpg">
+<img src="assetsfigures/main.jpg">
 
-## 🚨 News
-- **2024.08.28**: *DiffuseHigh* code release!
-- **2024.10.22**: Thank [blepping](https://github.com/blepping) for implementing ComfyUI version of *DiffuseHigh* with further improvements. Follow the instructions on [here](https://github.com/blepping/comfyui_jankdiffusehigh) to give it a try.
-- **2024.12.09**: *DiffuseHigh* accepted to [AAAI 2025](https://aaai.org/conference/aaai/aaai-25/)!
 
-## 🗓️ To Do List
-- [x] Code release for DiffuseHigh
-- [ ] DiffuseHigh + ControlNet
-- [ ] DiffuseHigh + SVD
+## Abstract
+3D super-resolution aims to reconstruct high-fidelity 3D models from low-resolution (LR) multi-view images. Early studies primarily focused on single-image super-resolution (SISR) models to upsample LR images into high-resolution images. However, these methods often lack view consistency because they operate independently on each image. Although various post-processing techniques have been extensively explored to mitigate these inconsistencies, they have yet to fully resolve the issues. In this paper, we perform a comprehensive study of 3D super-resolution by leveraging video super-resolution (VSR) models. By utilizing VSR models, we ensure a higher degree of spatial consistency and can reference surrounding spatial information, leading to more accurate and detailed reconstructions. Our findings reveal that VSR models can perform remarkably well even on sequences that lack precise spatial alignment. Given this observation, we propose a simple yet practical approach to align LR images without involving fine-tuning or generating `smooth' trajectory from the trained 3D models over LR images. The experimental results show that the surprisingly simple algorithms can achieve the state-of-the-art results of 3D super-resolution tasks on standard benchmark datasets, such as the NeRF-synthetic and MipNeRF-360 datasets.
 
-## ✏️ Abstract
-Large-scale generative models, such as text-to-image diffusion models, have garnered widespread attention across diverse domains due to their creative and high-fidelity image generation. Nonetheless, existing large-scale diffusion models are confined to generating images of up to 1K resolution, which is far from meeting the demands of contemporary commercial applications. Directly sampling higher-resolution images often yields results marred by artifacts such as object repetition and distorted shapes. Addressing the aforementioned issues typically necessitates training or fine-tuning models on higher-resolution datasets. However, this poses a formidable challenge due to the difficulty in collecting large-scale high-resolution images and substantial computational resources. While several preceding works have proposed alternatives to bypass the cumbersome training process, they often fail to produce convincing results. In this work, we probe the generative ability of diffusion models at higher resolution beyond their original capability and propose a novel progressive approach that fully utilizes generated low-resolution images to guide the generation of higher-resolution images. Our method obviates the need for additional training or fine-tuning which significantly lowers the burden of computational costs. Extensive experiments and results validate the efficiency and efficacy of our method.
-
-## ⚙️ Dependency Setup
-Create the conda environment with below commands.
-Our code is implemented based on torch + diffusers.
-You should first check your cuda compiler version, and install the compatible torch.
-
-We ran our experiment with torch 2.1.1 + cuda 12.1.
-
+## Environment Setup
+### Clone Git Repository
 ```Shell
-conda create -n diffusehigh python=3.9.0 -y
-conda activate diffusehigh
-pip install torch==2.1.1 torchvision==0.16.1 torchaudio==2.1.1 xformers --index-url https://download.pytorch.org/whl/cu121
+git clone https://github.com/DHPark98/SequenceMatters.git --recursive
 ```
-(It is cubersome to search the compatible 'xformers' with your current torch. You can simply add 'xformers' in your torch installation command like above.)
 
-You can manually install below pacakges in your environment:
+### Hardware / Software Requirements
+- NVIDIA RTX3090.
+- Ubuntu 18.04
+- PyTorch 1.12.1 + CUDA 11.3
+  
+We also checked that the code run successfully with PyTorch 2.0.1 + CUDA 11.8 on Ubuntu 20.04.
 
-- diffusers >= 0.24.0
-- accelerate
-- transformers
-- pywavelets
-- pytorch-wavelets
-
-or automatically install via following command:
+### Create the Conda Environment
+```Shell
+conda create -n seqmat python=3.8 -y
+conda activate seqmat
+pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu113
 ```
+
+### Install Submodules and Other Dependecies
+```Shell
+cd SequenceMatters
+pip install submodules/diff-gaussian-rasterization
+pip install submodules/simple-knn
 pip install -r requirements.txt
 ```
 
-## 🔥 Run DiffuseHigh + SDXL!
+## 🔥 Run ALS
 ### HyperParameters
 - `target_height` (type: `List[int]` or `int`, default: `[2048, 3072, 4096]`): The height of the image being generated. If list is given, the pipeline generates corresponding intermediate resolution images in a progressive manner.
 - `target_width` (type: `List[int]` or `int`, default: `[2048, 3072, 4096]`): The width of the image being generated. If list is given, the pipeline generates corresponding intermediate resolution images in a progressive manner.
