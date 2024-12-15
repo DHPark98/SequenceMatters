@@ -1,0 +1,15 @@
+hr_source_dir: "/home/work/mlcv/leao8869/AAAI/datasets/nerf_synthetic"
+lr_source_dir: "/home/work/mlcv/leao8869/AAAI/datasets/nerf_synthetic_lr2"
+vsr_save_dir: "/home/work/mlcv/leao8869/AAAI/datasets/nerf_synthetic_vsr2"
+video_save_path: Null
+vsr_model: psrt
+spynet_path: Null
+vsr_model_path: Null
+downscale_factor: 4
+subpixel: "bicubic"
+white_background: false
+als : false
+num_images_in_sequence: 100
+similarity: 'feature'
+thres_values: [45]
+lambda_tex: 0.60 
