@@ -5,7 +5,7 @@
 
 Official github for "Sequence Matters: Harnessing Video Model in 3D Super-Resolution"
 
-![Teaser](assets/video_comparison/bicubic_ours_chair.mp4)
+![Teaser](assets/video_comparison/bicubic_ours_chair.gif)
 
 
 ## Abstract
