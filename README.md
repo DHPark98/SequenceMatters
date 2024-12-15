@@ -40,20 +40,22 @@ pip install -r requirements.txt
 ```
 
 ## 🔥 Run ALS
-### HyperParameters
-- `target_height` (type: `List[int]` or `int`, default: `[2048, 3072, 4096]`): The height of the image being generated. If list is given, the pipeline generates corresponding intermediate resolution images in a progressive manner.
-- `target_width` (type: `List[int]` or `int`, default: `[2048, 3072, 4096]`): The width of the image being generated. If list is given, the pipeline generates corresponding intermediate resolution images in a progressive manner.
-- `guidance_image` (type: `torch.FloatTensor` or `PIL.Image.Image` or `np.ndarray`, default: `None`): If the guidance image is given, *DiffuseHigh* pipeline obtains structure properties from the given image, and generates desired high-resolution image.
-- `noising_steps` (type: `int`, default: `15`): The number of noising steps being used in *DiffuseHigh* pipeline.
-- `enable_dwt` (type: `bool`, default: `True`): Whether to use DWT-based structural guidance.
-- `dwt_steps` (type: `int`, default: `5`): The number of structural guidance steps during the denoising process. Typically, we found that 5 ~ 7 steps works well.
-- `dwt_level` (type: `int`, default: `1`): The DWT level of our proposed structural guidance.
-- `dwt_wave` (type: `str`, default: `'db4'`): Which wavelet to use for the DWT.
-- `dwt_mode` (type: `str`, default: `'symmetric'`): Padding scheme for the DWT.
-- `enable_sharpening` (type: `bool`, default: `True`): Whether to use sharpening operation in *DiffuseHigh* pipeline.
-- `sharpening_kernel_size` (type: `int`, default: `3`): Kernel size for the Gaussian blur involved in sharpening operation.
-- `sharpening_simga` (type: `tuple` or `float`, default: `(0.1, 2.0)`): Standard deviation to be used for creating kernel to perform blurring. If float, sigma is fixed. If it is tuple of float (min, max), sigma is chosen uniformly at random to lie in the given range.
-- `sharpening_alpha` (type: `float`, default: `1.0`): The sharpeness factor for controling the strength of the sharpening operation.
+### Prepare Datasets and Pre-trained VSR Model Weights
+Download the [NeRF dataset](https://www.matthewtancik.com/nerf) or [Mip-NeRF 360 dataset](https://jonbarron.info/mipnerf360/) from their project pages, and revise ```hr_source_dir```to the dataset path, which is in the configuration file (```configs/blender.yml``` or ```configs/mip360.yml```). Download the pre-trained weights of vsr model from [PSRT](https://github.com/XPixelGroup/RethinkVSRAlignment/blob/main/README.md#training) github repository, and place them under the path below:
+```
+SequenceMatters
+  ├─ (…)
+  └─ vsr
+      └─ psrt
+          ├─ arch
+          └─ experiments
+              └─ pretrained_models
+                  ├─ flownet
+                  |   └─ spynet_sintel_final-3d2a1287.pth
+                  ├─ PSRT_REDS.pth
+                  └─ [**PSRT_Vimeo.pth**](#)
+
+```
 
 ### How to use
 You can easily import the DiffuseHighSDXLPipeline from our provided code below.
