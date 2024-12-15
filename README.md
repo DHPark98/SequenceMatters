@@ -5,7 +5,7 @@
 
 Official github for "Sequence Matters: Harnessing Video Model in 3D Super-Resolution"
 
-![Teaser](assets/video_blender/output_combined.mp4)
+![Teaser](assets/video_comparison/bicubic_ours_chair.mp4)
 
 
 ## Abstract
@@ -124,4 +124,13 @@ python train.py \
 </details>
 <br>
 
->>>>>>> master
+
+## Citing Our Work
+```
+@article{ko2025sequencematters,
+  title={Sequence Matters: Harnessing Video Model in 3D Super-Resolution},
+  author={Ko, Hyun-kyu and Park, Dongheok and Park, Youngin Park and Lee, Byeonghyeon Lee and Han, Juhee Han and Park, Eunbyung},
+  journal={arXiv preprint arXiv:????.??????},
+  year={2024}
+}
+```
