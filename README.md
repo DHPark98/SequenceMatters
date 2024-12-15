@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# SequenceMatters
-Sequence Matters : Harnessing Video Model in 3D Super-Resolution
-=======
 # Sequence Matters: Harnessing Video Model in 3D Super-Resolution
 
 [![Project Page](https://img.shields.io/badge/Project-Page-green.svg)](https://github.com/DHPark98/SequenceMatters/)
@@ -9,11 +5,14 @@ Sequence Matters : Harnessing Video Model in 3D Super-Resolution
 
 Official github for "Sequence Matters: Harnessing Video Model in 3D Super-Resolution"
 
-<img src="assetsfigures/main.jpg">
+![Teaser](assets/video_blender/output_combined.mp4)
 
 
 ## Abstract
 3D super-resolution aims to reconstruct high-fidelity 3D models from low-resolution (LR) multi-view images. Early studies primarily focused on single-image super-resolution (SISR) models to upsample LR images into high-resolution images. However, these methods often lack view consistency because they operate independently on each image. Although various post-processing techniques have been extensively explored to mitigate these inconsistencies, they have yet to fully resolve the issues. In this paper, we perform a comprehensive study of 3D super-resolution by leveraging video super-resolution (VSR) models. By utilizing VSR models, we ensure a higher degree of spatial consistency and can reference surrounding spatial information, leading to more accurate and detailed reconstructions. Our findings reveal that VSR models can perform remarkably well even on sequences that lack precise spatial alignment. Given this observation, we propose a simple yet practical approach to align LR images without involving fine-tuning or generating `smooth' trajectory from the trained 3D models over LR images. The experimental results show that the surprisingly simple algorithms can achieve the state-of-the-art results of 3D super-resolution tasks on standard benchmark datasets, such as the NeRF-synthetic and MipNeRF-360 datasets.
+
+<img src="assets/figures/main.jpg">
+
 
 ## Environment Setup
 ### Clone Git Repository
