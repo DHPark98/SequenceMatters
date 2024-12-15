@@ -1,8 +1,3 @@
-env_name='3dgs_psrt'
-unset PYTHONPATH
-export PYTHONPATH="/home/work/.conda/envs/${env_name}/lib/python3.8/site-packages"
-
-
 GPU=0
 
 
