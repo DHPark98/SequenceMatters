@@ -82,4 +82,42 @@ python train.py \
 --config <path to the revised configuration file>
 ```
 
+<details>
+<summary><span style="font-weight: bold;">Primary Command Line Arguments for Network Viewer</span></summary>
+
+  ```hr_source_dir```
+  path to directory of the HR dataset of Blender / Mip-NeRF 360 dataset.
+  
+  ```lr_source_dir```
+  path to directory of the LR dataset to be saved.
+  
+  ```save_dir```
+  path to directory of the LR dataset to be saved.
+  
+  ```downscale_factor```
+  default : 4 for NeRF / 8 for Mip-NeRF 360
+
+  ```upscale_factor```
+  only defined on Mip-NeRF 360 dataset (default : 2)
+
+  ```als```
+  true : adaptive length sequences (ALS) / false : simple greedy algorithmm (S)
+
+  ```num_images_in_sequence```
+  length of sequence which are input in one vsr inference (reduce the value if you meet VRAM OOM Error)
+
+  ```similarity```
+  similarity to order sequences ( option : ['pose', 'feature'] )
+
+  ```thres_values```
+  threshold to stop generating sub-sequences in ALS
+
+
+  ```subpixel```
+  subpixel loss ( option : ['bicubic', 'avg'] )
+  
+  ```lambda_tex```:
+  loss weight of 3dgs loss ( 1 - loss weight of subpixel loss )
+</details>
+<br>
 
