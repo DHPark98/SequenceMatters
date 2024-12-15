@@ -1,0 +1,17 @@
+port: 6010
+hr_source_dir: "/home/work/mlcv/leao8869/AAAI/datasets/mip360"
+lr_source_dir: "/home/work/mlcv/leao8869/AAAI/datasets/mip360_lr"
+vsr_save_dir: "/home/work/mlcv/leao8869/AAAI/datasets/mip360_vsr"
+video_save_path: Null
+spynet_path: Null
+vsr_model_path: Null
+vsr_model: psrt
+downscale_factor: 8
+upscale_factor: 4
+subpixel: "bicubic"
+white_background: false
+als : true
+num_images_in_sequence: 8
+similarity: 'pose'
+thres_values: [30, 50]
+lambda_tex: 0.40 
