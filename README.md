@@ -17,7 +17,7 @@ Official github for "Sequence Matters: Harnessing Video Model in 3D Super-Resolu
 <img src="assets/figures/main.jpg">
 
 
-## Environment Setup
+## ⚙️ Environment Setup
 ### Clone Git Repository
 ```Shell
 git clone https://github.com/DHPark98/SequenceMatters.git --recursive
