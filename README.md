@@ -8,6 +8,7 @@ Official github for "Sequence Matters: Harnessing Video Model in 3D Super-Resolu
 ![Teaser](assets/video_comparison/bicubic_ours_chair.gif)
 
 ## 🚨 News
+- **2024.12.16**: *SequenceMatters* [project page](https://ko-lani.github.io/Sequence-Matters/) release!
 - **2024.12.15**: *SequenceMatters* code release!
 - **2024.12.09**: *SequenceMatters* accepted to [AAAI 2025](https://aaai.org/conference/aaai/aaai-25/)!
 
