@@ -131,10 +131,10 @@ python train.py \
 
 ## Citing Our Work
 ```
-@article{ko2025sequencematters,
+@article{ko2024sequencematters,
   title={Sequence Matters: Harnessing Video Model in 3D Super-Resolution},
   author={Ko, Hyun-kyu and Park, Dongheok and Park, Youngin Park and Lee, Byeonghyeon Lee and Han, Juhee Han and Park, Eunbyung},
-  journal={arXiv preprint arXiv:????.??????},
+  journal={arXiv preprint arXiv:2412.11525},
   year={2024}
 }
 ```
