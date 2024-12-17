@@ -49,7 +49,7 @@ pip install -r requirements.txt
 
 ## 🔥 Run ALS
 ### Prepare Datasets and Pre-trained VSR Model Weights
-Download the [NeRF dataset](https://www.matthewtancik.com/nerf) or [Mip-NeRF 360 dataset](https://jonbarron.info/mipnerf360/) from their project pages, and revise ```hr_source_dir```to the dataset path, which is in the configuration file (```configs/blender.yml``` or ```configs/mip360.yml```). Download the pre-trained weights of vsr model from [PSRT](https://github.com/XPixelGroup/RethinkVSRAlignment/blob/main/README.md#training) github repository, and place them under the path below:
+Download the [NeRF Synthetic dataset](https://www.matthewtancik.com/nerf) or [Mip-NeRF 360 dataset](https://jonbarron.info/mipnerf360/) from their project pages, and revise ```hr_source_dir```to the dataset path, which is in the configuration file (```configs/blender.yml``` or ```configs/mip360.yml```). Download the pre-trained weights of vsr model from [PSRT](https://github.com/XPixelGroup/RethinkVSRAlignment/blob/main/README.md#training) github repository, and place them under the path below:
 ```
 SequenceMatters
   ├─ (…)
@@ -132,10 +132,10 @@ python train.py \
 
 ## Citing Our Work
 ```
-@article{ko2024sequencematters,
-  title={Sequence Matters: Harnessing Video Model in 3D Super-Resolution},
-  author={Ko, Hyun-kyu and Park, Dongheok and Park, Youngin Park and Lee, Byeonghyeon Lee and Han, Juhee Han and Park, Eunbyung},
-  journal={arXiv preprint arXiv:2412.11525},
-  year={2024}
-}
+@misc{ko2024sequencemattersharnessingvideo,
+      title={Sequence Matters: Harnessing Video Models in Super-Resolution}, 
+      author={Ko, Hyun-kyu and Park, Dongheok and Park, Youngin and Lee, Byeonghyeon and Han, Juhee Han and Park, Eunbyung},
+      booktitle={arXiv preprint arXiv:2412.11525},
+      year={2024},
+    }
 ```
