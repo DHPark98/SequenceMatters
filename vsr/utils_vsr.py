@@ -1,6 +1,3 @@
-# export PYTHONPATH=$PYTHONPATH:/home/work/mlcv/laniko/IART/RethinkVSRAlignment
-
-
 import os
 import json
 import shutil
@@ -12,7 +9,7 @@ from PIL import Image
 import re
 from archs.psrt_recurrent_arch import BasicRecurrentSwin
 from basicsr.utils import tensor2img
-from colmap_loader import read_extrinsics_binary, qvec2rotmat
+from scene.colmap_loader import read_extrinsics_binary, qvec2rotmat
 
 
 
@@ -458,7 +455,7 @@ def process_ALS(
                 batch_imgs = torch.from_numpy(batch_imgs).float().div(255.0).unsqueeze(0).to(device)
 
                 with torch.no_grad():
-                    outputs = model(batch_imgs).squeeze(0)/home/work/mlcv/leao8869/AAAI/old_files/home/work/mlcv/leao8869/AAAI/datasets/nerf_synthetic_vsr2
+                    outputs = model(batch_imgs).squeeze(0)
 
                 for idx, middle_idx in enumerate(middle_indices):
                     if ((idx == 0) or (idx == len(middle_indices)-1)) and threshold != thres_values[-1]:
