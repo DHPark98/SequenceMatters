@@ -143,4 +143,5 @@ python train.py \
 
 ## License and Acknowledgement
 We express our gratitude to the following contributors, whose code provided a foundation for our work:
+
 [3DGS](https://github.com/graphdeco-inria/gaussian-splatting), [VRT](https://github.com/JingyunLiang/VRT), [PSRT](https://github.com/alttch/psrt), [IART](https://github.com/kai422/IART), [BasicSR](https://github.com/SwinTransformer/Video-Swin-Transformer), [mmeditin](https://github.com/open-mmlab/mmagic)
