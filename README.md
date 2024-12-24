@@ -1,9 +1,9 @@
-# Sequence Matters: Harnessing Video Model in 3D Super-Resolution
+# Sequence Matters: Harnessing Video Models in 3D Super-Resolution
 
 [![Project Page](https://img.shields.io/badge/Project-Page-green.svg)](https://ko-lani.github.io/Sequence-Matters/)
 [![arXiv](https://img.shields.io/badge/arXiv-2311.16973-b31b1b.svg)](https://arxiv.org/abs/2412.11525)
 
-Official github for "Sequence Matters: Harnessing Video Model in 3D Super-Resolution"
+Official github for "Sequence Matters: Harnessing Video Models in 3D Super-Resolution"
 
 ![Teaser](assets/video_comparison/bicubic_ours_chair.gif)
 
