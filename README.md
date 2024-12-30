@@ -36,7 +36,7 @@
 
 <div align="center">
     <h4>
-        This repository is the official PyTorch implementation of "Sequence Matters: Harnessing Video Models in 3D Super-Resolution"
+        Official PyTorch implementation for "Sequence Matters: Harnessing Video Models in 3D Super-Resolution"
     </h4>
 </div>
 </div>
