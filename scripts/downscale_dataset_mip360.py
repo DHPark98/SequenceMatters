@@ -1,10 +1,11 @@
 import os
 import shutil
 import numpy as np
-from PIL import Image
+import cv2
 from tqdm import tqdm
 import yaml
 from argparse import ArgumentParser, Namespace
+from matlab_functions import imresize
 
 
 
@@ -47,20 +48,22 @@ def main(args):
                 output_path_gt = os.path.join(images_gt_dir, os.path.splitext(filename)[0] + ".png")
 
                 try:
-                    with Image.open(input_path) as img:
-                        # Handle images with alpha channel
-                        W, H = img.size
-                        # Resize the image with downscale_factor (W//8, H//8)
-                        W_lr, H_lr = round(W / downscale_factor), round(H / downscale_factor)
-                        resized_img_down = img.resize((W_lr, H_lr), Image.BICUBIC)
-                        resized_img_down.save(output_path_down, format="PNG")
+                    img = cv2.imread(input_path, cv2.IMREAD_UNCHANGED)
 
-                        # Resize the image further to (W//8 * 4, H//8 * 4)
-                        resized_img_gt = img.resize(
-                            (W_lr * upscale_factor, H_lr * upscale_factor), 
-                            Image.BICUBIC
-                        )
-                        resized_img_gt.save(output_path_gt, format="PNG")
+                    W, H, _ = img.shape
+                    # Resize the image with downscale_factor (W//8, H//8)
+                    W_lr, H_lr = round(W / downscale_factor), round(H / downscale_factor)
+                    resized_img_down = imresize(img, scale=1/downscale_factor, out_h=W_lr, out_w=H_lr, antialiasing=True)    ### matlab bicucbi
+                    cv2.imwrite(output_path_down, resized_img_down)
+
+                    # Resize the image further to (W//8 * 4, H//8 * 4)
+                    resized_img_gt = imresize(
+                        img, scale=(1/downscale_factor) * upscale_factor, 
+                        out_h=W_lr * upscale_factor, 
+                        out_w=H_lr * upscale_factor, 
+                        antialiasing=True
+                    )    ### matlab bicucbi
+                    cv2.imwrite(output_path_gt, resized_img_gt)
 
                 except Exception as e:
                     print(f"Error processing {input_path}: {e}")

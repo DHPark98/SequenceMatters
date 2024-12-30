@@ -1,10 +1,11 @@
 import os
 import shutil
 import numpy as np
-from PIL import Image
+import cv2
 from tqdm import tqdm
 import yaml
 from argparse import ArgumentParser, Namespace
+from matlab_functions import imresize
 
 
 def main(args):
@@ -47,30 +48,17 @@ def main(args):
                 output_path = os.path.join(split_output_dir, filename)
 
                 try:
-                    with Image.open(input_path) as img:
-                        # Handle images with alpha channel
-                        if img.mode == "RGBA":
-                            # Convert RGBA to Numpy Array
-                            rgba = np.array(img)
-                            rgb = np.zeros((rgba.shape[0], rgba.shape[1], 3), dtype=np.uint8)
+                    img = cv2.imread(input_path, cv2.IMREAD_UNCHANGED)
+                    if img.shape[2] == 4:
+                        alpha = img[..., 3] / 255
+                        img = alpha[..., None] * img[..., :3] + (1. - alpha)[..., None] * background_color
 
-                            # Separate alpha channel
-                            r, g, b, a = rgba[..., 0], rgba[..., 1], rgba[..., 2], rgba[..., 3]
+                    W, H, _ = img.shape
+                    # Resize the image with antialiasing
+                    resized_img = imresize(img, scale=1/downscale_factor, antialiasing=True)    ### matlab bicucbi
 
-                            # Perform alpha blending
-                            rgb[..., 0] = r * (a / 255) + background_color[0] * (1 - a / 255)
-                            rgb[..., 1] = g * (a / 255) + background_color[1] * (1 - a / 255)
-                            rgb[..., 2] = b * (a / 255) + background_color[2] * (1 - a / 255)
-
-                            # Convert RGB array back to an image
-                            img = Image.fromarray(rgb, mode="RGB")
-
-                        W, H = img.size
-                        # Resize the image with antialiasing
-                        resized_img = img.resize((W//downscale_factor, H//downscale_factor), Image.BICUBIC)
-
-                        # Save the resized image
-                        resized_img.save(output_path)
+                    # Save the resized image
+                    cv2.imwrite(output_path, resized_img)
 
                 except Exception as e:
                     print(f"Error processing {input_path}: {e}")
@@ -99,3 +87,11 @@ if __name__ == "__main__":
     args = Namespace(**vars(args), **config)
 
     main(args)
+
+
+'''
+
+python /hdd/leao8869/aaai2025_sequence/SequenceMatters/scripts/downscale_dataset_blender.py \
+--config /hdd/leao8869/aaai2025_sequence/SequenceMatters/configs/blender.yml
+
+'''

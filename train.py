@@ -295,6 +295,30 @@ def training_report(tb_writer, iteration, Ll1, loss, l1_loss, elapsed, testing_i
             tb_writer.add_scalar('total_points', scene.gaussians.get_xyz.shape[0], iteration)
         torch.cuda.empty_cache()
 
+
+
+def load_config(args):
+    import os
+    import yaml
+    from argparse import Namespace
+
+    with open(args.config, "r") as file:
+        config = yaml.safe_load(file)
+
+    scene = os.path.basename(args.model_path)
+    config["source_path"] = os.path.join(config["vsr_save_path"], scene)
+    config["model_path"] = os.path.join(config["output_3dgs_path"], scene)
+
+    merged_args = vars(args).copy()
+    merged_args.update(config)      
+    args = Namespace(**merged_args)
+
+    print(args.source_path)
+
+    return args
+
+
+
 if __name__ == "__main__":
     # Set up command line argument parser
     parser = ArgumentParser(description="Training script parameters")
@@ -318,7 +342,7 @@ if __name__ == "__main__":
     # parser.add_argument("--hr_source_path", type=str, default=None, help="LR dataset path")
     # parser.add_argument("--vsr_save_path", type=str, default=None, help="LR dataset path")
     # parser.add_argument("--vsr_model", type=str, default="psrt", help="psrt / iart")
-    parser.add_argument("--config", type=str, required=True, help="Path to configuration YAML file")
+    parser.add_argument("--config", type=str, default=None, help="Path to configuration YAML file")
 
     args = parser.parse_args(sys.argv[1:])
     args.save_iterations.append(args.iterations)

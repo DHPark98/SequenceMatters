@@ -1,0 +1,5 @@
+*__pycache__
+output
+scripts/downsample_vimeo.py
+scripts/downscale_dataset_blender_pil.py
+scripts/downscale_dataset_mip360_pil.py
