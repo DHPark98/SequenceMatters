@@ -7,7 +7,7 @@
     <a target='_blank'>Youngin Park</a><sup>2</sup>&nbsp;
     <a href='https://scholar.google.co.kr/citations?user=_PhPccYAAAAJ&hl=ko&oi=ao' target='_blank'>Byeonghyeon Lee</a><sup>1</sup>&nbsp;
     <a target='_blank'>Juhee Han</a><sup>1</sup>&nbsp;
-    <a href='https://silverbottlep.github.io/' target='_blank'>Eunbyung Park</a><sup>† 1</sup>
+    <a href='https://silverbottlep.github.io/' target='_blank'>Eunbyung Park</a><sup>1 †</sup>
 </div>
     <div>
         <sup>*</sup>Equal contribution, <sup>†</sup>Corresponding author
