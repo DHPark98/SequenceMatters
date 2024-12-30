@@ -130,7 +130,7 @@ python train.py \
 <br>
 
 
-## Cite Our Work !
+## 📖 Cite Our Work !
 ```
 @article{ko2024sequence,
   title={Sequence Matters: Harnessing Video Models in Super-Resolution},
