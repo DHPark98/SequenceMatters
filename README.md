@@ -130,8 +130,9 @@ python train.py \
 <br>
 
 
-## 📖 Cite Our Work !
-```
+## 📖 Reference
+If you find our work useful, please consider citing:
+```BibTeX
 @article{ko2024sequence,
   title={Sequence Matters: Harnessing Video Models in Super-Resolution},
   author={Ko, Hyun-kyu and Park, Dongheok and Park, Youngin and Lee, Byeonghyeon and Han, Juhee and Park, Eunbyung},
