@@ -1,11 +1,48 @@
-# Sequence Matters: Harnessing Video Model in 3D Super-Resolution
+<div align="center">
+<h2>Sequence Matters: Harnessing Video Models in 3D Super-Resolution<br>(AAAI 2025)</h2>
 
-[![Project Page](https://img.shields.io/badge/Project-Page-green.svg)](https://ko-lani.github.io/Sequence-Matters/)
-[![arXiv](https://img.shields.io/badge/arXiv-2311.16973-b31b1b.svg)](https://arxiv.org/abs/2412.11525)
+<div>    
+    <a href='https://scholar.google.co.kr/citations?user=lsi-8-QAAAAJ&hl=ko&oi=ao' target='_blank'>Hyun-kyu Ko</a><sup>1*</sup>&nbsp;
+    <a href='https://scholar.google.co.kr/citations?user=UUtpFKgAAAAJ&hl=ko&oi=ao' target='_blank'>Dongheok Park</a><sup>1*</sup>&nbsp;
+    <a target='_blank'>Youngin Park</a><sup>2</sup>&nbsp;
+    <a href='https://scholar.google.co.kr/citations?user=_PhPccYAAAAJ&hl=ko&oi=ao' target='_blank'>Byeonghyeon Lee</a><sup>1</sup>&nbsp;
+    <a target='_blank'>Juhee Han</a><sup>1</sup>&nbsp;
+    <a href='https://silverbottlep.github.io/' target='_blank'>Eunbyung Park</a><sup>1†</sup>
+</div>
+    <div>
+        <sup>*</sup>Equal contribution, <sup>†</sup>Corresponding author
+    </div>
+    <br>
+<div>
+    <sup>1</sup>Sungkyunkwan University, South Korea
+</div>
+<div>
+    <sup>2</sup>Samsung Electronics, South Korea
+</div>
 
-Official github for "Sequence Matters: Harnessing Video Model in 3D Super-Resolution"
+<div>
+    <h4 align="center">
+        <a href="https://ko-lani.github.io/Sequence-Matters/index.html" target='_blank'>
+        <img src="https://img.shields.io/badge/🍀-Project%20Page-green">
+        </a>
+        <a href="https://arxiv.org/abs/2401.03707" target='_blank'>
+        <img src="https://img.shields.io/badge/arXiv-2401.03707-b31b1b.svg">
+        </a>
+        <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/DHPark98/SequenceMatters">
+    </h4>
+</div>
 
-![Teaser](assets/video_comparison/bicubic_ours_chair.gif)
+---
+
+<div align="center">
+    <h4>
+        Official PyTorch Implementation for "Sequence Matters: Harnessing Video Models in 3D Super-Resolution"
+    </h4>
+    <div>
+        <img src="assets/video_comparison/bicubic_ours_chair.gif" alt="Teaser" style="display: block; margin: 20px auto; max-width: 100%;">
+    </div>
+</div>
+</div>
 
 ## :rocket: News
 - **2024.12.16**: *SequenceMatters* [project page](https://ko-lani.github.io/Sequence-Matters/) release!
@@ -130,12 +167,19 @@ python train.py \
 <br>
 
 
-## Citing Our Work
+## 📖 Reference
+If you find our work useful, please consider citing:
+```BibTeX
+@article{ko2024sequence,
+  title={Sequence Matters: Harnessing Video Models in Super-Resolution},
+  author={Ko, Hyun-kyu and Park, Dongheok and Park, Youngin and Lee, Byeonghyeon and Han, Juhee and Park, Eunbyung},
+  journal={arXiv preprint arXiv:2412.11525},
+  year={2024}
+}
 ```
-@misc{ko2024sequencemattersharnessingvideo,
-      title={Sequence Matters: Harnessing Video Models in Super-Resolution}, 
-      author={Ko, Hyun-kyu and Park, Dongheok and Park, Youngin and Lee, Byeonghyeon and Han, Juhee Han and Park, Eunbyung},
-      booktitle={arXiv preprint arXiv:2412.11525},
-      year={2024},
-    }
-```
+
+
+## Acknowledgement
+We express our gratitude to the following contributors, whose code provided a foundation for our work:
+
+[3DGS](https://github.com/graphdeco-inria/gaussian-splatting), [VRT](https://github.com/JingyunLiang/VRT), [PSRT](https://github.com/alttch/psrt), [IART](https://github.com/kai422/IART), [BasicSR](https://github.com/SwinTransformer/Video-Swin-Transformer), [mmeditin](https://github.com/open-mmlab/mmagic)
