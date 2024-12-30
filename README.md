@@ -1,5 +1,6 @@
 <div align="center">
-<h2>Sequence Matters: Harnessing Video Models in 3D Super-Resolution (AAAI 2025)</h2>
+<h2>Sequence Matters: Harnessing Video Models in 3D Super-Resolution 
+    (AAAI 2025)</h2>
 
 <div>    
     <a href='https://scholar.google.co.kr/citations?user=lsi-8-QAAAAJ&hl=ko&oi=ao' target='_blank'>Hyun-kyu Ko</a><sup>1*</sup>&nbsp;
