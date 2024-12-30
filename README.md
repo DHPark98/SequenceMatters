@@ -36,12 +36,13 @@
 
 <div align="center">
     <h4>
-        Official PyTorch implementation for "Sequence Matters: Harnessing Video Models in 3D Super-Resolution"
+        Official PyTorch Implementation for "Sequence Matters: Harnessing Video Models in 3D Super-Resolution"
     </h4>
+    <div>
+        <img src="assets/video_comparison/bicubic_ours_chair.gif" alt="Teaser" style="display: block; margin: 20px auto; max-width: 100%;">
+    </div>
 </div>
 </div>
-
-![Teaser](assets/video_comparison/bicubic_ours_chair.gif)
 
 ## :rocket: News
 - **2024.12.16**: *SequenceMatters* [project page](https://ko-lani.github.io/Sequence-Matters/) release!
