@@ -43,7 +43,7 @@ def setup_paths_and_params(args):
         vsr_trainset_path = os.path.join(args.source_path, "train")
         thres_values = args.thres_values
 
-        shutil.copytree(os.path.join(args.lr_source_path, "test"), os.path.join(args.source_path, "test"), dirs_exist_ok=True)
+        shutil.copytree(os.path.join(args.hr_source_path, "test"), os.path.join(args.source_path, "test"), dirs_exist_ok=True)
         shutil.copytree(os.path.join(args.lr_source_path, "train"), os.path.join(args.source_path, "train_lr"), dirs_exist_ok=True)
         shutil.copy2(os.path.join(args.hr_source_path, "transforms_train.json"), os.path.join(args.source_path, "transforms_train.json"))
         shutil.copy2(os.path.join(args.hr_source_path, "transforms_val.json"), os.path.join(args.source_path, "transforms_val.json"))
