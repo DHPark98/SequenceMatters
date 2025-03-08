@@ -75,6 +75,11 @@ def upscale_data(args, device='cuda'):
             vsr_trainset_path, transform_path,
             num_images_in_sequence, device=device
         )
+        
+        # Optionally create a video
+        if video_save_path:
+            create_video_from_images(all_sorted_image_paths, video_save_path)
+            print(f"Video saved at {video_save_path}")
     else:
         process_ALS(
             model_vsr, similarity, images, names, 
@@ -82,10 +87,6 @@ def upscale_data(args, device='cuda'):
             thres_values, num_images_in_sequence, device
         )
 
-    # Optionally create a video
-    if video_save_path:
-        create_video_from_images(all_sorted_image_paths, video_save_path)
-        print(f"Video saved at {video_save_path}")
     
     # update source path to path of upscaled images
     # args.source_path = args.vsr_save_path
@@ -297,25 +298,26 @@ def training_report(tb_writer, iteration, Ll1, loss, l1_loss, elapsed, testing_i
 
 
 
-def load_config(args):
-    import os
-    import yaml
-    from argparse import Namespace
+# def load_config(args):
+#     import os
+#     import yaml
+#     from argparse import Namespace
 
-    with open(args.config, "r") as file:
-        config = yaml.safe_load(file)
+#     with open(args.config, "r") as file:
+#         config = yaml.safe_load(file)
 
-    scene = os.path.basename(args.model_path)
-    config["source_path"] = os.path.join(config["vsr_save_path"], scene)
-    config["model_path"] = os.path.join(config["output_3dgs_path"], scene)
+#     scene = os.path.basename(args.model_path)
+#     config["source_path"] = os.path.join(config["vsr_save_dir"], scene)    #####
+#     # config["source_path"] = os.path.join(config["vsr_save_path"], scene)
+#     config["model_path"] = os.path.join(config["output_3dgs_path"], scene)
 
-    merged_args = vars(args).copy()
-    merged_args.update(config)      
-    args = Namespace(**merged_args)
+#     merged_args = vars(args).copy()
+#     merged_args.update(config)      
+#     args = Namespace(**merged_args)
 
-    print(args.source_path)
+#     print(args.source_path)
 
-    return args
+#     return args
 
 
 

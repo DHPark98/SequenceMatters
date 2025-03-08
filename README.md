@@ -128,7 +128,7 @@ python train.py \
 ```
 
 <details>
-<summary><span style="font-weight: bold;">Primary Command Line Arguments for Network Viewer</span></summary>
+<summary><span style="font-weight: bold;">Primary Command Line Arguments for Config files</span></summary>
 
   ```hr_source_dir```
   path to directory of the HR dataset of Blender / Mip-NeRF 360 dataset.
@@ -136,8 +136,8 @@ python train.py \
   ```lr_source_dir```
   path to directory of the LR dataset to be saved.
   
-  ```save_dir```
-  path to directory of the LR dataset to be saved.
+  ```vsr_save_dir```
+  path to directory of the VSR-upsampled dataset to be saved.
   
   ```downscale_factor```
   default : 4 for NeRF / 8 for Mip-NeRF 360

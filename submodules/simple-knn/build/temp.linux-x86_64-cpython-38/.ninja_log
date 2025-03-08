@@ -1,0 +1,4 @@
+# ninja log v5
+1	10985	1741414274893352794	/hdd/leao8869/aaai2025_sequence/SequenceMatters/submodules/simple-knn/build/temp.linux-x86_64-cpython-38/simple_knn.o	264aeec1b20c0b5
+1	17915	1741414281765387277	/hdd/leao8869/aaai2025_sequence/SequenceMatters/submodules/simple-knn/build/temp.linux-x86_64-cpython-38/ext.o	ecc7f9e886303e4b
+1	40764	1741414304629504990	/hdd/leao8869/aaai2025_sequence/SequenceMatters/submodules/simple-knn/build/temp.linux-x86_64-cpython-38/spatial.o	7c2deea1711464a4

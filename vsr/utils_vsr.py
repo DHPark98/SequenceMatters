@@ -392,8 +392,6 @@ def process_S(
 
     total_outputs = torch.cat(total_outputs, dim=0)
     
-    return all_sorted_image_paths, total_outputs
-
 
 def process_ALS(
         model, similarity, images, names, 
@@ -468,10 +466,12 @@ def process_ALS(
                     if not os.path.exists(output_path):
                         Image.fromarray(output_img).save(output_path)
                         created_images.add(output_name)
+                        
                         # print(f"Created: {output_name}")
                 
                 if len(created_images) == len(names):
                     all_images_created = True
+                    
 
 
 def save_sorted_images(image_paths, sorted_indices, output_directory):
@@ -482,7 +482,8 @@ def save_sorted_images(image_paths, sorted_indices, output_directory):
         cv2.imwrite(os.path.join(output_directory, os.path.basename(image_paths[idx])), img)
 
 
-def create_video_from_images(image_paths, video_path, fps=30):
+def create_video_from_images(image_dirs, video_path, fps=30):
+    image_paths = sorted(os.listdir(image_dirs))
     frame = cv2.imread(image_paths[0])
     height, width, layers = frame.shape
     video = cv2.VideoWriter(video_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (width, height))

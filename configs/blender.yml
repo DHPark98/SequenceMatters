@@ -1,6 +1,6 @@
-hr_source_dir: "/hdd/leao8869/Datasets/3D/nerf_synthetic"
-lr_source_dir: "/hdd/leao8869/aaai2025_sequence/trash/nerf_synthetic_lr2"
-vsr_save_dir: "/hdd/leao8869/aaai2025_sequence/trash/nerf_synthetic_vsr2"
+hr_source_dir: <path to directory of the HR dataset>
+lr_source_dir: <path to directory of the LR dataset to be saved>
+vsr_save_dir: <path to directory of the VSR-upsampled dataset to be saved>
 video_save_path: Null
 vsr_model: psrt
 spynet_path: Null

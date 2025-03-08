@@ -1,7 +1,7 @@
 port: 6010
-hr_source_dir: "/hdd/leao8869/Datasets/3D/mip360"
-lr_source_dir: "/hdd/leao8869/aaai2025_sequence/trash/mip360_lr"
-vsr_save_dir: "/hdd/leao8869/aaai2025_sequence/trash/mip360_vsr"
+hr_source_dir: <path to directory of the HR dataset>
+lr_source_dir: <path to directory of the LR dataset to be saved>
+vsr_save_dir: <path to directory of the VSR-upsampled dataset to be saved>
 video_save_path: Null
 spynet_path: Null
 vsr_model_path: Null

@@ -55,7 +55,7 @@ def main(args):
                     W_lr, H_lr = round(W / downscale_factor), round(H / downscale_factor)
                     resized_img_down = imresize(img, scale=1/downscale_factor, out_h=W_lr, out_w=H_lr, antialiasing=True)    ### matlab bicucbi
                     cv2.imwrite(output_path_down, resized_img_down)
-
+                    import pdb; pdb.set_trace()
                     # Resize the image further to (W//8 * 4, H//8 * 4)
                     resized_img_gt = imresize(
                         img, scale=(1/downscale_factor) * upscale_factor, 

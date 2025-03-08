@@ -3,3 +3,6 @@ output
 scripts/downsample_vimeo.py
 scripts/downscale_dataset_blender_pil.py
 scripts/downscale_dataset_mip360_pil.py
+vsr/psrt/experiments/pretrained_models/flownet/spynet_sintel_final-3d2a1287.pth
+configs/blender_debug.yml
+vsr/psrt/experiments/pretrained_models/PSRT_Vimeo.pth
