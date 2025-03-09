@@ -10,6 +10,7 @@ import re
 from archs.psrt_recurrent_arch import BasicRecurrentSwin
 from basicsr.utils import tensor2img
 from scene.colmap_loader import read_extrinsics_binary, qvec2rotmat
+from tqdm import tqdm
 
 
 
@@ -388,9 +389,11 @@ def process_S(
                 created_images.add(output_name)
                 all_sorted_image_paths.append(output_path)
 
-        # print(f"Processed chunk starting at index {i}, created images: {sorted(created_images)}")
+        print(f"\rProcessing S: {len(created_images)} / {len(images)} ({(len(created_images) / len(images)) * 100:.2f}%)", end="", flush=True)
 
     total_outputs = torch.cat(total_outputs, dim=0)
+
+    return all_sorted_image_paths, total_outputs
     
 
 def process_ALS(
@@ -472,6 +475,7 @@ def process_ALS(
                 if len(created_images) == len(names):
                     all_images_created = True
                     
+            print(f"\rProcessing ALS: {len(created_images)} / {len(images)} ({(len(created_images) / len(images)) * 100:.2f}%)", end="", flush=True)
 
 
 def save_sorted_images(image_paths, sorted_indices, output_directory):
@@ -483,7 +487,7 @@ def save_sorted_images(image_paths, sorted_indices, output_directory):
 
 
 def create_video_from_images(image_dirs, video_path, fps=30):
-    image_paths = sorted(os.listdir(image_dirs))
+    image_paths = sorted(image_dirs)
     frame = cv2.imread(image_paths[0])
     height, width, layers = frame.shape
     video = cv2.VideoWriter(video_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (width, height))

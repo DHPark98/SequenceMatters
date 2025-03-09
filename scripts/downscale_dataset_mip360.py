@@ -5,8 +5,8 @@ import cv2
 from tqdm import tqdm
 import yaml
 from argparse import ArgumentParser, Namespace
-from matlab_functions import imresize
-
+import torch
+import torch.nn.functional as F
 
 
 def main(args):
@@ -15,7 +15,8 @@ def main(args):
     downscale_factor = args.downscale_factor
     upscale_factor = args.upscale_factor
 
-    scenes = ["bicycle", "bonsai", "counter", "garden", "kitchen", "room", "stump", "flowers", "room"]
+    scenes = ["bicycle", "bonsai", "counter", "garden", "kitchen", "room", "stump", "flowers", "treehill"]
+    scenes = ["flowers", "treehill"]
     splits = ["images"]
 
     # Iterate through all subdirectories and process images
@@ -49,20 +50,24 @@ def main(args):
 
                 try:
                     img = cv2.imread(input_path, cv2.IMREAD_UNCHANGED)
+                    img = img / 255.0  # Normalize to [0, 1]
+                    img = torch.from_numpy(img).permute(2, 0, 1).unsqueeze(0).float()  # (H, W, C) -> (1, C, H, W)
+                    hr_h, hr_w = img.shape[2:]  # Get height and width
 
-                    W, H, _ = img.shape
                     # Resize the image with downscale_factor (W//8, H//8)
-                    W_lr, H_lr = round(W / downscale_factor), round(H / downscale_factor)
-                    resized_img_down = imresize(img, scale=1/downscale_factor, out_h=W_lr, out_w=H_lr, antialiasing=True)    ### matlab bicucbi
+                    lr_x8_h = round(hr_h / 8)
+                    lr_x8_w = round(hr_w / 8)
+
+                    resized_img_down = F.interpolate(img, size=(lr_x8_h, lr_x8_w), mode="bicubic", align_corners=False, antialias=True)
+                    resized_img_down = (resized_img_down.squeeze(0).permute(1, 2, 0).numpy() * 255).clip(0, 255).astype(np.uint8)
                     cv2.imwrite(output_path_down, resized_img_down)
-                    import pdb; pdb.set_trace()
+
                     # Resize the image further to (W//8 * 4, H//8 * 4)
-                    resized_img_gt = imresize(
-                        img, scale=(1/downscale_factor) * upscale_factor, 
-                        out_h=W_lr * upscale_factor, 
-                        out_w=H_lr * upscale_factor, 
-                        antialiasing=True
-                    )    ### matlab bicucbi
+                    lr_x2_h = lr_x8_h * 4
+                    lr_x2_w = lr_x8_w * 4
+
+                    resized_img_gt = F.interpolate(img, size=(lr_x2_h, lr_x2_w), mode="bicubic", align_corners=False, antialias=True)
+                    resized_img_gt = (resized_img_gt.squeeze(0).permute(1, 2, 0).numpy() * 255).clip(0, 255).astype(np.uint8)
                     cv2.imwrite(output_path_gt, resized_img_gt)
 
                 except Exception as e:

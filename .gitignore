@@ -5,4 +5,8 @@ scripts/downscale_dataset_blender_pil.py
 scripts/downscale_dataset_mip360_pil.py
 vsr/psrt/experiments/pretrained_models/flownet/spynet_sintel_final-3d2a1287.pth
 configs/blender_debug.yml
+configs/mip360_debug.yml
 vsr/psrt/experiments/pretrained_models/PSRT_Vimeo.pth
+scripts/downscale_dataset_blender_matlab.py
+scripts/run_blender_debug.sh
+scripts/run_mip360_debug.sh

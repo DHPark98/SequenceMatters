@@ -5,7 +5,8 @@ import cv2
 from tqdm import tqdm
 import yaml
 from argparse import ArgumentParser, Namespace
-from matlab_functions import imresize
+import torch
+import torch.nn.functional as F
 
 
 def main(args):
@@ -49,13 +50,16 @@ def main(args):
 
                 try:
                     img = cv2.imread(input_path, cv2.IMREAD_UNCHANGED)
+                    img = img / 255.0
+
                     if img.shape[2] == 4:
-                        alpha = img[..., 3] / 255
+                        alpha = img[..., 3]
                         img = alpha[..., None] * img[..., :3] + (1. - alpha)[..., None] * background_color
 
-                    W, H, _ = img.shape
                     # Resize the image with antialiasing
-                    resized_img = imresize(img, scale=1/downscale_factor, antialiasing=True)    ### matlab bicucbi
+                    img = torch.from_numpy(img).permute(2, 0, 1).unsqueeze(0).float()  # (H, W, C) -> (1, C, H, W)
+                    resized_img = F.interpolate(img, scale_factor=1/downscale_factor, mode="bicubic", align_corners=False, antialias=True)
+                    resized_img = (resized_img.squeeze(0).permute(1, 2, 0).numpy() * 255).clip(0, 255).astype(np.uint8)
 
                     # Save the resized image
                     cv2.imwrite(output_path, resized_img)

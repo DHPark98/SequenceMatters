@@ -65,7 +65,7 @@ if __name__ == "__main__":
     print("Rendering " + args.model_path)
  
     args = load_config(args)
-    args.source_path = args.gt_source_path
+    # args.source_path = args.gt_source_path
 
     # Initialize system state (RNG)
     safe_state(args.quiet)
