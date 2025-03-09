@@ -86,7 +86,7 @@ pip install -r requirements.txt
 
 ## 🔥 Run ALS
 ### Prepare Datasets and Pre-trained VSR Model Weights
-Download the [NeRF Synthetic dataset](https://www.matthewtancik.com/nerf) or [Mip-NeRF 360 dataset](https://jonbarron.info/mipnerf360/) from their project pages, and revise ```hr_source_dir```to the dataset path, which is in the configuration file (```configs/blender.yml``` or ```configs/mip360.yml```). Download the pre-trained weights of vsr model from [PSRT](https://github.com/XPixelGroup/RethinkVSRAlignment/blob/main/README.md#training) github repository, and place them under the path below:
+Download the [NeRF Synthetic dataset](https://www.matthewtancik.com/nerf) or [Mip-NeRF 360 dataset](https://jonbarron.info/mipnerf360/) from their project pages, and revise ```hr_source_dir```to the dataset path, which is in the configuration file (```configs/blender.yml``` or ```configs/mip360.yml```). Download the pre-trained weights of vsr model from [PSRT](https://github.com/XPixelGroup/RethinkVSRAlignment/tree/main) github repository, and place them under the path below:
 ```
 SequenceMatters
   ├─ (…)
