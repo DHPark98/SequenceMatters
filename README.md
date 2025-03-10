@@ -25,7 +25,7 @@
         <a href="https://ko-lani.github.io/Sequence-Matters/index.html" target='_blank'>
         <img src="https://img.shields.io/badge/🍀-Project%20Page-green">
         </a>
-        <a href="https://arxiv.org/abs/2401.03707" target='_blank'>
+        <a href="https://arxiv.org/abs/2412.11525" target='_blank'>
         <img src="https://img.shields.io/badge/arXiv-2401.03707-b31b1b.svg">
         </a>
         <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/DHPark98/SequenceMatters">
